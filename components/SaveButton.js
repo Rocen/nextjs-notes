@@ -1,7 +1,10 @@
 import { useFormStatus } from 'react-dom'
+import { useTranslations } from 'next-intl';
 
-export default function EditButton({ formAction }) {
-  const { pending } = useFormStatus()
+export default function SaveButton({ formAction }) {
+  const { pending } = useFormStatus();
+  const t = useTranslations('Basic');
+
   return (
     <button
       className="note-editor-done"
@@ -17,7 +20,7 @@ export default function EditButton({ formAction }) {
         alt=""
         role="presentation"
       />
-      {pending ? 'Saving' : 'Done'}
+      {pending ? t('saving') : t('done')}
     </button>
   );
 }

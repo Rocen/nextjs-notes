@@ -1,5 +1,5 @@
-import SidebarNoteItemHeader from '@/components/SidebarNoteItemHeader';
 import SidebarNoteItemContent from '@/components/SidebarNoteItemContent';
+import SidebarNoteItemHeader from '@/components/SidebarNoteItemHeader';
 
 export default function SidebarNoteItem({ noteId, note}) {
 
@@ -13,7 +13,7 @@ export default function SidebarNoteItem({ noteId, note}) {
           {content.substring(0, 20) || <i>(No content)</i>}
         </p>
       }>
-     <SidebarNoteItemHeader title={title} updateTime={updateTime} />
+        <SidebarNoteItemHeader title={title} updateTime={updateTime} />
     </SidebarNoteItemContent>
   );
 }

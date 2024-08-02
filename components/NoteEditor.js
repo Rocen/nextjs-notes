@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import NotePreview from '@/components/NotePreview'
-import { useFormState } from 'react-dom'
-import { deleteNote, saveNote } from '../app/actions'
-import SaveButton from '@/components/SaveButton'
-import DeleteButton from '@/components/DeleteButton'
+import { useEffect, useRef, useState } from 'react';
+import NotePreview from '@/components/NotePreview';
+import { useFormState } from 'react-dom';
+import { deleteNote, saveNote } from '../app/[locale]/actions';
+import SaveButton from '@/components/SaveButton';
+import DeleteButton from '@/components/DeleteButton';
+import { useTranslations, NextIntlClientProvider, useMessages } from 'next-intl';
 
 const initialState = {
   message: null,
@@ -16,6 +17,9 @@ export default function NoteEditor({
   initialTitle,
   initialBody
 }) {
+
+  const t = useTranslations('Basic');
+  const messages = useMessages();
 
   const [saveState, saveFormAction] = useFormState(saveNote, initialState)
   const [delState, delFormAction] = useFormState(deleteNote, initialState)
@@ -37,8 +41,17 @@ export default function NoteEditor({
       <form className="note-editor-form" autoComplete="off">
         <input type="hidden" name="noteId" value={noteId || ''} />
         <div className="note-editor-menu" role="menubar">
+        {/* <NextIntlClientProvider
+            messages={{
+              Basic: messages.Basic
+            }}
+            >
           <SaveButton formAction={saveFormAction} />
-          <DeleteButton isDraft={isDraft} formAction={delFormAction} />
+        </NextIntlClientProvider> */}
+        <SaveButton formAction={saveFormAction} />
+        <DeleteButton isDraft={isDraft} formAction={delFormAction}>
+          {t('delete')}
+        </DeleteButton>
         </div>
         <div className="note-editor-menu">
           { saveState?.message }
