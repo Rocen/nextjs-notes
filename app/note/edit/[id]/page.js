@@ -1,10 +1,9 @@
 import NoteEditor from '@/components/NoteEditor'
-import {getNote} from '@/lib/redis';
+import { getNote } from '@/lib/redis';
 
 export default async function EditPage({ params }) {
   const noteId = params.id;
   const note = await getNote(noteId)
-
   // 让效果更明显
   // const sleep = ms => new Promise(r => setTimeout(r, ms));
   // await sleep(5000);
@@ -19,6 +18,6 @@ export default async function EditPage({ params }) {
     )
   }
 
-  return <NoteEditor noteId={noteId} initialTitle={note.title} initialBody={note.content} />
+  return <NoteEditor noteId={noteId} initialTitle={note.title} initialBody={note.content} />;
 }
 

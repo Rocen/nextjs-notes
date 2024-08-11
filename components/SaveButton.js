@@ -1,9 +1,7 @@
-import { useFormStatus } from 'react-dom'
-import { useTranslations } from 'next-intl';
+import { useFormStatus } from 'react-dom';
 
 export default function SaveButton({ formAction }) {
   const { pending } = useFormStatus();
-  const t = useTranslations('Basic');
 
   return (
     <button
@@ -20,7 +18,7 @@ export default function SaveButton({ formAction }) {
         alt=""
         role="presentation"
       />
-      {pending ? t('saving') : t('done')}
+      {pending ? 'Saving' : 'Done'}
     </button>
   );
 }

@@ -1,6 +1,6 @@
 import { useFormStatus } from 'react-dom';
 
-export default function DeleteButton({ isDraft, formAction, children }) {
+export default function DeleteButton({ isDraft, formAction }) {
   const { pending } = useFormStatus();
 
   return !isDraft && (
@@ -17,7 +17,7 @@ export default function DeleteButton({ isDraft, formAction, children }) {
           alt=""
           role="presentation"
         />
-        {children}
+        Delete
       </button>
     )
 }

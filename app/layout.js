@@ -1,5 +1,6 @@
-import './style.css'
-import Sidebar from '@/components/Sidebar'
+import './style.css';
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
 
 export default async function RootLayout({
   children
@@ -11,7 +12,10 @@ export default async function RootLayout({
         <div className="container">
           <div className="main">
             <Sidebar />
-            <section className="col note-viewer">{children}</section>
+            <section className="col note-viewer">
+              <Header />
+              {children}
+            </section>
           </div>
         </div>
       </body>
