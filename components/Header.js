@@ -1,6 +1,7 @@
-import { signIn, signOut } from "auth"
-import { auth } from "auth"
-import Link from 'next/link'
+import { signIn, signOut } from "auth";
+import { auth } from "auth";
+import Link from 'next/link';
+import ThemeSwitch from "./ThemeSwitch";
 
 function SignIn({
   provider,
@@ -37,17 +38,20 @@ export default async function Header() {
   const session = await auth()
   return (
     <header className="user-header">
-        <Link href="/client">Client Side Component</Link>
-        {
-          !session?.user ? 
-          <SignIn /> : 
-          <span className="user-content">
-             <span className="user-name">
-                {session?.user.name}  
-             </span>
-            <SignOut />
-          </span>
-        }
+        {/* <Link href="/client">Client Side Component</Link> */}
+        <div className="flex flex-row items-center">
+          {
+            !session?.user ? 
+            <SignIn /> : 
+            <span className="user-content">
+              <span className="user-name">
+                  {session?.user.name}  
+              </span>
+              <SignOut />
+            </span>
+          }
+          <ThemeSwitch />
+        </div>
     </header>
   )
 }

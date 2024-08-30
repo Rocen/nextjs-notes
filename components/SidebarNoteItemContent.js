@@ -61,7 +61,7 @@ export default function SidebarNoteContent({
         Open note for preview
       </button>
       <button
-        className="sidebar-note-toggle-expand"
+        className="sidebar-note-toggle-expand flex justify-center items-center"
         onClick={(e) => {
           e.stopPropagation();
           setIsExpanded(!isExpanded);
